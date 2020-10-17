@@ -9,8 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{{$tite}}</title>
     <meta name="google-site-verification" content="ESV6jPP7DnDCHN5HR35d13mElWwIKdmNyIzc8IP-D9k" />
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
+<div id="app">
 <!-- Pop Up -->
 <div class="popUp">
     <div class="popUp__inner">
@@ -95,6 +97,9 @@
 
 
 @yield('content')
+
+</div>
+
 
 
 <!-- Footer -->

@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/user_list','ApiController@UserList');
 Route::post('/user_add','ApiController@UserStore');
+Route::post('/get_foto','ApiController@getFoto');

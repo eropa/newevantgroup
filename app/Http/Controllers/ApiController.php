@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,11 @@ class ApiController extends Controller
         $model->role=$request->input('addRole');
         $model->save();
         return 1;
+    }
+
+    public function getFoto(Request $request){
+        $data=Foto::all();
+        return response()->json($data);
     }
 
 }
