@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
     <link rel="stylesheet" href="/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Anna</title>
+    <title>{{$tite}}</title>
+    <meta name="google-site-verification" content="ESV6jPP7DnDCHN5HR35d13mElWwIKdmNyIzc8IP-D9k" />
 </head>
 <body>
 <!-- Pop Up -->
@@ -59,14 +60,9 @@
         <div class="header__top">
             <nav class="header__nav">
                 <ul>
-                    <li><a class="header__active" href="index.html">Главная</a></li>
-                    <li><a class="header__active" href="index.html">Услуги</a></li>
-                    <li><a href="str1.html">Мебельная фурнитура</a></li>
-                    <li><a href="str2.html">Плитные материалы</a></li>
-                    <li><a href="str3.html">Кромочные материалы</a></li>
-                    <li><a href="str4.html">Галерея</a></li>
-                    <li><a href="news.html">Новости</a></li>
-
+                    @foreach($menus1 as $item)
+                        <li><a  href="#">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </nav>
         </div>
@@ -89,198 +85,18 @@
     <div class="header__bottom">
         <div class="container">
             <div class="header__bottom__inner">
-                <div class="header__bottom__section section__active"><a href="index.html">Услуги</a></div>
-                <div class="header__bottom__section"><a href="str1.html">Мебельная фурнитура</a></div>
-                <div class="header__bottom__section"><a href="str2.html">Плитные материалы</a></div>
-                <div class="header__bottom__section"><a href="str3.html">Кромочные материалы</a></div>
-                <div class="header__bottom__section"><a href="str4.html">Галерея</a></div>
+                @foreach($menus2 as $item)
+                    <div class="header__bottom__section "><a href="#">{{$item->name}}</a></div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
-<!-- Intro -->
-<div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-            <div class="intro__fon">
-                <img src="img/intro/Intro.png" alt="">
-                <div class="intro__about">
-                    <div class="intro__about__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
 
-                    <div class="intro__about__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
 
-                    <div class="intro__about__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
+@yield('content')
 
-                </div>
-            </div>
-            <div class="intro__colum">
-                <div class="intro__colum__inner">
-                    <div class="intro__event">Акция</div>
-                    <div class="intro__news">
-                        <div class="intro__news__title">Новости</div>
-                        <div class="intro__news__info">
-                            <p>Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</p>
-                            <br>
-                            <p>Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</p>
-                            <br>
-                            <p>Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</p>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Gallery -->
-<div class="gallery">
-    <div class="container">
-        <div class="gallery__inner">
-            <div class="gallery__title">Галерея</div>
-            <div class="gallery__list">
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                        <div class="gallery__list__text">
-                            <div class="gallery__list__title">Название</div>
-                            <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-                <div class="gallery__list__item">
-                    <div class="gallery__list__inner">
-                    </div>
-                </div>
-            </div>
-            <div class="gallery__background"></div>
-        </div>
-    </div>
-</div>
-<!-- Contacts -->
-<div class="contacts">
-    <div class="container">
-        <div class="contacts__inner">
-            <div class="contacts__title">Контакты</div>
-            <div class="contacts__list">
-                <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Footer -->
 <footer class="footer">
 </footer>

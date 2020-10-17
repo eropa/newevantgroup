@@ -33,11 +33,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li>
-                            <a href="{{ route('admin.users') }}">
-                                Пользователи
-                            </a>
-                        </li>
+                            @can('isAdmin', \App\User::class)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.users') }}">  Пользователи</a>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.infoblock') }}">Инфоблок</a>
+                            </li>
+                            @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

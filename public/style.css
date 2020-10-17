@@ -76,7 +76,7 @@ a, a:visited {
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
-    transition: 0.3;
+    transition: 0.3s;
     color: #ffffff;
 }
 
@@ -86,13 +86,13 @@ a:hover, a:focus {
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
-    transition: 0.3;
+    transition: 0.3s;
     color: #990404;
 }
 
-input:: -ms-clear{display: none;}
+input::-ms-clear{display: none;}
 button {cursor: pointer;}
-button:: -moz-focus-inner {
+button::-moz-focus-inner {
     padding: 0;
     margin: 0;
 }
@@ -763,7 +763,7 @@ transform: rotate(-45deg);
 
 .intro__event {
     font-weight: bold;
-    font-size: 70px;
+    font-size: 54px;
     text-align: center;
 
     padding: 128px 0 130px;

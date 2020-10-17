@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PageController@index');
 
 
-Route::get('/users/list','UserController@user_admin')->name('admin.users');
+Route::get('/users/list','UserController@user_admin')
+    ->name('admin.users');
+Route::get('/infoblock/list','UserController@user_infoblock')
+    ->name('admin.infoblock');
+Route::get('/infoblock/edit/{id}','InfoblokController@edit')
+    ->name('admin.infoblock.edit');
+Route::post('/infoblock/update','InfoblokController@update')
+    ->name('admin.infoblock.update');
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
