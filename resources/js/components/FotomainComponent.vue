@@ -6,23 +6,17 @@
             </div>
         </div>
         <div class="gallery__list"  v-if="loadFoto==1">
-            <div class="gallery__list__item" v-for="item in listfoto">
-                <div class="gallery__list__inner">
+            <div class="gallery__list__item" v-for="item in listfoto"
+                 v-bind:style="{ backgroundImage: 'url(fotomain/' + item.file_name + ')', backgroundSize:'cover'}"
+                >
+                <div class="gallery__list__inner" style="background-color: #cea50e;">
                     <div class="gallery__list__text">
-                        <div class="gallery__list__title">Название</div>
-                        <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
+                        <div class="gallery__list__title">{{item.name}}</div>
+                        <div class="gallery__list__subtitle">{{item.about}}</div>
                     </div>
                 </div>
             </div>
 
-            <div class="gallery__list__item">
-                <div class="gallery__list__inner">
-                    <div class="gallery__list__text">
-                        <div class="gallery__list__title">Название222</div>
-                        <div class="gallery__list__subtitle">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое</div>
-                    </div>
-                </div>
-            </div>
 
 
         </div>

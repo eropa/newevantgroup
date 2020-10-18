@@ -1968,12 +1968,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FotomainComponent",
   data: function data() {
@@ -37820,16 +37814,39 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "gallery__list" },
-          [
-            _vm._l(_vm.listfoto, function(item) {
-              return _c("div", { staticClass: "gallery__list__item" }, [
-                _vm._m(1, true)
-              ])
-            }),
-            _vm._v(" "),
-            _vm._m(2)
-          ],
-          2
+          _vm._l(_vm.listfoto, function(item) {
+            return _c(
+              "div",
+              {
+                staticClass: "gallery__list__item",
+                style: {
+                  backgroundImage: "url(fotomain/" + item.file_name + ")",
+                  backgroundSize: "cover"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "gallery__list__inner",
+                    staticStyle: { "background-color": "#cea50e" }
+                  },
+                  [
+                    _c("div", { staticClass: "gallery__list__text" }, [
+                      _c("div", { staticClass: "gallery__list__title" }, [
+                        _vm._v(_vm._s(item.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "gallery__list__subtitle" }, [
+                        _vm._v(_vm._s(item.about))
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          }),
+          0
         )
       : _vm._e(),
     _vm._v(" "),
@@ -37848,44 +37865,6 @@ var staticRenderFns = [
       { staticClass: "spinner-border text-warning", attrs: { role: "status" } },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "gallery__list__inner" }, [
-      _c("div", { staticClass: "gallery__list__text" }, [
-        _c("div", { staticClass: "gallery__list__title" }, [
-          _vm._v("Название")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "gallery__list__subtitle" }, [
-          _vm._v(
-            "Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "gallery__list__item" }, [
-      _c("div", { staticClass: "gallery__list__inner" }, [
-        _c("div", { staticClass: "gallery__list__text" }, [
-          _c("div", { staticClass: "gallery__list__title" }, [
-            _vm._v("Название222")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "gallery__list__subtitle" }, [
-            _vm._v(
-              "Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое"
-            )
-          ])
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -50446,6 +50425,50 @@ Vue.component('fotoindex-component', __webpack_require__(/*! ./components/Fotoma
 
 var app = new Vue({
   el: '#app'
+});
+/* Menu Pop Up */
+
+$(".header__enter").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'hidden';
+  $(".popUp").toggleClass("popUp__active");
+});
+$(".popUp__close").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'scroll';
+  $(".popUp").removeClass("popUp__active");
+});
+/* Browse */
+
+$(".catalog__gallery").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'hidden';
+  $(".browse").toggleClass("browse__active");
+});
+$(".browse__fon").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'scroll';
+  $(".browse").removeClass("browse__active");
+});
+$(".browse_background").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'scroll';
+  $(".browse").removeClass("browse__active");
+});
+/* Browse Slider*/
+
+$('.browse__wrapper').slick({
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  dots: false,
+  prevArrow: '.arrows__prew',
+  nextArrow: '.arrows__next'
+});
+/* Accordion */
+
+$(".accordion__label").click(function (e) {
+  $(this.firstElementChild).toggleClass('open');
 });
 
 /***/ }),

@@ -24,6 +24,17 @@ Route::get('/infoblock/edit/{id}','InfoblokController@edit')
     ->name('admin.infoblock.edit');
 Route::post('/infoblock/update','InfoblokController@update')
     ->name('admin.infoblock.update');
+Route::get('/infoblock/foto','FotoController@index')
+    ->name('admin.foto');
+Route::get('/infoblock/foto/add','FotoController@add')
+    ->name('admin.foto.add');
+Route::post('/infoblock/foto/store','FotoController@store')
+    ->name('admin.foto.store');
+Route::get('/foto/edit/{id}','FotoController@edit')
+    ->name('admin.foto.edit');
+Route::post('/foto/update','FotoController@update')
+    ->name('admin.foto.update');
+
 
 
 Auth::routes();

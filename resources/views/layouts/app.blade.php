@@ -37,9 +37,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.users') }}">  Пользователи</a>
                                 </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.infoblock') }}">Инфоблок</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.infoblock') }}">Инфоблок</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.foto') }}">Фото</a>
+                                </li>
                             @endcan
                     </ul>
 
