@@ -106,7 +106,7 @@
 <footer class="footer">
 </footer>
 
-<script type="text/javascript" src="slick/slick.js"></script>
+
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >

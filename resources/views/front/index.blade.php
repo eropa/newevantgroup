@@ -76,10 +76,45 @@
             <div class="contacts__inner">
                 <div class="contacts__title">Контакты</div>
                 <div class="contacts__list">
-                    <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                    <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                    <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
-                    <div class="contacts__item">Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое. Эта книга посвящена теории колорита в живописи. Но возможна ли вообще такая теория? Чувство цвета едва ли не самое субъективное из человеческих чувств. О чем здесь можно говорить и спорить?</div>
+                    <div class="contacts__item">
+                        {!!$podval1->text_html!!}
+                        @can('isAdmin', \App\User::class)
+                            <hr>
+                            <a href="{{route('admin.infoblock.edit',['id'=>$podval1->id])}}"
+                                style="color: black"
+                                >
+                                edit
+                            </a>
+                        @endcan
+                    </div>
+                    <div class="contacts__item">
+                        {!!$podval2->text_html!!}
+                        @can('isAdmin', \App\User::class)
+                            <hr>
+                            <a href="{{route('admin.infoblock.edit',['id'=>$podval2->id])}}"  style="color: black">
+                                edit
+                            </a>
+                        @endcan
+                    </div>
+                    <div class="contacts__item">
+                        {!!$podval3->text_html!!}
+                        @can('isAdmin', \App\User::class)
+                            <hr>
+                            <a href="{{route('admin.infoblock.edit',['id'=>$podval3->id])}}"  style="color: black">
+                                edit
+                            </a>
+                        @endcan
+                    </div>
+                    <div class="contacts__item">
+                        {!!$podval4->text_html!!}
+                        @can('isAdmin', \App\User::class)
+                            <hr>
+                            <a href="{{route('admin.infoblock.edit',['id'=>$podval4->id])}}"  style="color: black">
+                                edit
+                            </a>
+                        @endcan
+                    </div>
+
                 </div>
             </div>
         </div>

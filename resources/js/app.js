@@ -65,15 +65,6 @@ $(".browse_background").on("click", (event) => {
 });
 
 
-/* Browse Slider*/
-$('.browse__wrapper').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    prevArrow: ('.arrows__prew'),
-    nextArrow: ('.arrows__next')
-});
 
 
 /* Accordion */
