@@ -63,14 +63,14 @@
             <nav class="header__nav">
                 <ul>
                     @foreach($menus1 as $item)
-                        <li><a  href="#">{{$item->name}}</a></li>
+                        <li><a  href="{{ url($item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
             </nav>
         </div>
         <div class="header__middle">
             <div class="header__right">
-                <img class="header__logo" src="img/header/logo.png" alt="">
+                <img class="header__logo" src="{{ asset('img/header/logo.png') }}" alt="">
                 <div class="header__address">Мебельное ателье <br> ул. Чернышевского 6А <br> www.evantgroup.com <br> 077749822, 077754155</div>
             </div>
             <div class="header__center">
@@ -88,7 +88,7 @@
         <div class="container">
             <div class="header__bottom__inner">
                 @foreach($menus2 as $item)
-                    <div class="header__bottom__section "><a href="#">{{$item->name}}</a></div>
+                    <div class="header__bottom__section "><a href="{{ url($item->slug) }}">{{$item->name}}</a></div>
                 @endforeach
             </div>
         </div>

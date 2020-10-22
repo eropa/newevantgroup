@@ -43,6 +43,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.foto') }}">Фото</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.page') }}">Страница</a>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.fotocat') }}">Галлерея</a>
+                            </li>
                             @endcan
                     </ul>
 
