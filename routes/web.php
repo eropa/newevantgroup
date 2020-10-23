@@ -48,11 +48,28 @@ Route::get('/fotocatadmin/list','FotocatController@fotocat')
 
 Route::get('/fotocatadmin/list/{id}','GallaryController@showfotoAdmin')
     ->name('admin.gallarylist');
+Route::get('/fotocatadmin/addfooto','GallaryController@storefoto')
+    ->name('admin.gallary.add');
+Route::post('/fotocatadmin/createfooto','GallaryController@createfoto')
+    ->name('admin.gallary.store');
+
+Route::get('/fotocatadmingal/delete/{id}','GallaryController@deletefoto')
+    ->name('admin.gallary.delete');
+Route::get('/fotocatadminfoto/delete/{id}','GallaryController@deletecatfoto')
+    ->name('admin.fotocat.delete');
+
+Route::get('/newsadmin/list','NewController@ListAdmin')
+    ->name('admin.news.list');
+Route::get('/newsadmin/create','NewController@create')
+    ->name('admin.news.create');
+Route::post('/newsadmin/store','NewController@store')
+    ->name('admin.news.store');
 
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/new','NewController@index')->name('page.news');
+Route::get('/newsdetal/{id}','NewController@show')->name('page.news.detal');
 Route::get('/gallaryfoto','GallaryController@showlist')->name('page.showlist');
 Route::get('/gallaryfoto/{id}','GallaryController@showfoto')->name('gallary.foto');
 

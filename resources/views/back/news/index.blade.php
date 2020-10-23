@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <a class="btn btn-info" href="#" role="button">Добавить</a>
+                        <a class="btn btn-info" href="{{ route('admin.news.create')}}" role="button">Добавить</a>
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -23,21 +23,13 @@
                                             {{$data->id}}
                                         </td>
                                         <td>
-                                            <img src="{{ asset('gal_type/'.$data->file_name)}}"
-                                                width="120";
-                                            >
+                                            {{$data->foto_file}}
                                         </td>
                                         <td>
-                                            {{$data->name}}
-                                            <a href="{{ route('admin.gallarylist',['id'=>$data->id]) }}">
-                                                фото
-                                            </a>
+                                            {{$data->title}}
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.fotocat.delete',['id'=>$data->id]) }}">
-                                                удалить
-                                            </a>
-
+                                            удалить
                                         </td>
                                     </tr>
                                 @endforeach
