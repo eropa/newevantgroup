@@ -68,6 +68,7 @@ Route::post('/newsadmin/store','NewController@store')
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/shopgroup/{id}', 'ShopController@index')->name('shop.showgroup');
 Route::get('/newlist','NewController@index')->name('page.news');
 Route::get('/newsdetal/{id}','NewController@show')->name('page.news.detal');
 Route::get('/gallaryfoto','GallaryController@showlist')->name('page.showlist');

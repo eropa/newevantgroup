@@ -1,5 +1,5 @@
 @extends('front.app')
 
 @section('content')
-            {!! $data->html_code !!}
+    {!! $data->html_code !!}
 @endsection
