@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="slick/slick.css">
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v=3">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{{$tite}}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="ESV6jPP7DnDCHN5HR35d13mElWwIKdmNyIzc8IP-D9k" />
-    <script src="{{ asset('js/app.js') }}?v=2" defer></script>
+    <script src="{{ asset('js/app.js') }}?v=3" defer></script>
 </head>
 <body>
 <div id="app">
