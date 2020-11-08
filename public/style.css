@@ -178,6 +178,20 @@ h1,h2,h3,h4,h5,h6 {
     background: rgba(255, 255, 255, 0.7);
 }
 
+.popUpKorzina {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+}
+
 .popUp__active {
     display: flex;
 }
@@ -194,6 +208,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .popUp__innerphone {
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 890px;
+    background: #FBFBFB;
+    border: 2px solid #CC0610;
+    border-radius: 10px;
+}
+
+.popUp__innerzakaz {
     display: flex;
     position: relative;
     margin: auto;

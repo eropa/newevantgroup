@@ -50,7 +50,7 @@
                                     <a class="nav-link" href="{{ route('admin.fotocat') }}">Галлерея</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.fotocat') }}">Фото</a>
+                                    <a class="nav-link" href="{{ route('admin.fotocat') }}">Заявки</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.news.list') }}">Новости</a>

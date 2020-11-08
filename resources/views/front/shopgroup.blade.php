@@ -32,7 +32,11 @@
                                 <div class="list__item__value">
                                     <div class="list__item__price">{{$data->price}} р.</div>
                                     <div class="list__item__favorite"></div>
-                                    <div class="list__item__basket"></div>
+                                    <div class="list__item__basket addcard"
+                                         data-tovarid="{{$data->id}}"
+                                         data-tovarname="{{$data->name}}"
+                                         data-tovarprice="{{$data->price}}"
+                                    ></div>
                                 </div>
                             </div>
                         @endif

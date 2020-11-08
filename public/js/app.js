@@ -53148,6 +53148,7 @@ $(".popUp__close").on("click", function (event) {
   document.body.style.overflow = 'scroll';
   $(".popUp").removeClass("popUp__active");
   $(".popUpPhone").removeClass("popUp__active");
+  $(".popUpKorzina").removeClass("popUp__active");
 });
 /* Browse */
 
@@ -53186,6 +53187,44 @@ $("#sendzaivka").on("click", function (event) {
     },
     success: function success(data) {
       console.log(data);
+    }
+  });
+});
+$(".addcard").on("click", function () {
+  var tovarid = $(this).data('tovarid');
+  var tovarname = $(this).data('tovarname');
+  var tovarprice = $(this).data('tovarprice');
+  $.ajax({
+    url: '/addtovar',
+    method: 'post',
+    dataType: 'html',
+    data: {
+      tovarid: tovarid,
+      tovarname: tovarname,
+      counttovar: 1,
+      price: tovarprice,
+      "_token": $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      alert('Товар в корзине !');
+      console.log(data);
+    }
+  });
+});
+$(".header__basket").on("click", function (event) {
+  event.preventDefault(); // document.body.style.overflow = 'hidden';
+
+  $.ajax({
+    url: '/showcards',
+    method: 'post',
+    dataType: 'html',
+    data: {
+      "_token": $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      console.log(data);
+      document.getElementById("ShowCard").innerHTML = data;
+      $(".popUpKorzina").toggleClass("popUp__active");
     }
   });
 }); //

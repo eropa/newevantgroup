@@ -80,4 +80,6 @@ Route::get('/gallaryfoto','GallaryController@showlist')->name('page.showlist');
 Route::get('/gallaryfoto/{id}','GallaryController@showfoto')->name('gallary.foto');
 
 Route::get('/{slug}','PageController@showpage')->name('page.show');
-Route::post('/sendzaivka', 'ApiController@sendZaivka')->name('home');
+Route::post('/sendzaivka', 'ApiController@sendZaivka');
+Route::post('/addtovar', 'ApiController@addtovar');
+Route::post('/showcards', 'ApiController@getCardBuy');

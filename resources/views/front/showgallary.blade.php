@@ -9,6 +9,7 @@
                 <div class="catalog__list">
                     @foreach($gallary as $item)
                         <div class="catalog__gallery"
+                             onclick=" window.open('{{ url('/gallary/'.$item->file_name)}}', '_blank');"
                              style="background: url(/gallary/{{$item->file_name}}) #ffffff center no-repeat;
                             background-size: cover;">
                         </div>

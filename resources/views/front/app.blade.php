@@ -90,6 +90,19 @@
      </div>
 </div>
 
+<div class="popUpKorzina">
+    <div class="popUp__innerzakaz">
+        <div class="popUp__enterphone" id="divZaivka">
+            <div class="popUp__title">Корзина товара</div>
+            <br>
+              <div id="ShowCard">
+
+              </div>
+            </div>
+        <div class="popUp__close"></div>
+    </div>
+</div>
+
 <!-- Header -->
 <div class="header">
     <div class="container">

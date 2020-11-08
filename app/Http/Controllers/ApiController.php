@@ -46,4 +46,29 @@ class ApiController extends Controller
         return 1;
     }
 
+
+    public function addtovar(Request $request){
+      //  $request->session()->forget('cardbuy');
+        //$a=2;
+        if ($request->session()->has('cardbuy')) {
+            $arrayAdd=array('id'=>$request->input('tovarid'),
+                'name'=>$request->input('tovarname'),
+                'counttovar'=>$request->input('counttovar'));
+            $request->session()->push('cardbuy', $arrayAdd);
+        }else {
+            $arrayAdd=array('id'=>$request->input('tovarid'),
+                            'name'=>$request->input('tovarname'),
+                            'counttovar'=>$request->input('counttovar')
+                );
+            $request->session()->push('cardbuy', $arrayAdd);
+        }
+        return 1;
+    }
+
+    public function getCardBuy(){
+        $datas= session('cardbuy');
+        $html= view('front.cardshow',['datas'=>$datas])->render();
+        return $html;
+    }
+
 }
