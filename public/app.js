@@ -1,4 +1,11 @@
 /* Menu Pop Up */
+    $(".popUpPhone").on("click", (event) => {
+        event.preventDefault();
+        alert('dsdasda');
+        document.body.style.overflow = 'hidden';
+        $(".popUpPhone").toggleClass("popUp__active");
+    });
+
     $(".header__enter").on("click", (event) => {
         event.preventDefault();
         document.body.style.overflow = 'hidden';
@@ -9,6 +16,7 @@
         event.preventDefault();
         document.body.style.overflow = 'scroll';
         $(".popUp").removeClass("popUp__active");
+        $(".popUpPhone").removeClass("popUp__active");
     });
 
 /* Browse */

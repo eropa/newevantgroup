@@ -75,4 +75,21 @@ class PageController extends Controller
         $model->save();
         return redirect()->route('admin.page');
     }
+
+
+    public function Mylogin(){
+        $menus1=Menu::where('pos_id',1)->get();
+        $menus2=Menu::where('pos_id',2)->get();
+
+
+
+
+
+        return view('front.login',[
+            'tite'=>"EvantGroup - мебель на заказ",
+            'menus1'=>$menus1,
+            'menus2'=>$menus2,
+        ]);
+    }
+
 }

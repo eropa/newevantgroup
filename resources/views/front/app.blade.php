@@ -8,28 +8,27 @@
     <link rel="stylesheet" href="/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{{$tite}}</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="ESV6jPP7DnDCHN5HR35d13mElWwIKdmNyIzc8IP-D9k" />
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}?v=2" defer></script>
 </head>
 <body>
 <div id="app">
 <!-- Pop Up -->
 <div class="popUp">
     <div class="popUp__inner">
+        @guest
         <div class="popUp__enter">
             <div class="popUp__title">Вход</div>
             <div class="popUp__subtitle">Я совершал здесь покупки и регистрировалься</div>
 
-            <form action="#" method="post" enctype="multipart/form-data">
-                <input tabindex="1" type="text" name="enter__login" class="popUp__input" placeholder="Логин">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <input tabindex="1" type="text" name="email" class="popUp__input" placeholder="Логин" required>
                 <br>
-                <input tabindex="2" type="password" name="enter__password" class="popUp__input"  placeholder="Пороль">
+                <input tabindex="2" type="password" name="password" class="popUp__input"  placeholder="Пороль" required>
 
-                <div class="popUp_custom">
-                    <input tabindex="3" id="enter" class="popUp__checkbox"  type="checkbox" name="politic" value="yes">
-                    <label for="enter" class="popUp__label">Запомнить меня?
-                    </label>
-                </div>
                 <p><a class="popUplink" href="#">Забыли пароль?</a></p>
 
                 <button class="enter__button popUp__button" tabindex="4" type="submit">Вход</button>
@@ -39,23 +38,58 @@
         <div class="popUp__registration">
             <div class="popUp__title">Регистрация</div>
 
-            <form action="#" method="post" enctype="multipart/form-data">
-                <input tabindex="1" type="text" name="registration__login" class="popUp__input input__registration" placeholder="Логин">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <input tabindex="1" type="text" name="name" class="popUp__input input__registration" required placeholder="Ф.И.О.">
                 <br>
-                <input tabindex="2" type="password" name="registration__password" class="popUp__input input__registration"  placeholder="Пороль">
+                <input tabindex="2" type="text" name="email" class="popUp__input input__registration"  required placeholder="Логин">
+                <br>
+                <input tabindex="3" type="password" name="password" class="popUp__input input__registration"  required  placeholder="Пороль">
 
                 <div class="popUp_custom">
-                    <input tabindex="3" id="registration" class="popUp__checkbox"  type="checkbox" name="politic" value="yes">
+                    <input tabindex="3" id="registration" class="popUp__checkbox"  type="checkbox" name="politic" value="yes" required>
                     <label for="registration" class="popUp__label">Я согласен с условиямми использования и обработки моих персональных данных.
                     </label>
                 </div>
 
                 <button class="registration__button popUp__button" tabindex="4" type="submit">Регистрация</button>
+                @csrf
             </form>
+
         </div>
+        @else
+            <div class="popUp__enter">
+                <div class="popUp__title">Панель управлеемя</div>
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                 Выxод
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+             </div>
+        @endguest
         <div class="popUp__close"></div>
     </div>
 </div>
+
+
+ <div class="popUpPhone">
+     <div class="popUp__innerphone">
+         <div class="popUp__enterphone" id="divZaivka">
+             <div class="popUp__title">Бесплатный выезд на замеры и создание  проекта</div>
+             <br>
+             <input type="text"
+                    id="phonezaivka"
+                    name="phone" class="popUp__input"  placeholder="Номер телефона">
+             <button class="registration__button popUp__button"  id="sendzaivka" >Отправить заявку</button>
+         </div>
+         <div class="popUp__close"></div>
+     </div>
+</div>
+
 <!-- Header -->
 <div class="header">
     <div class="container">
@@ -78,9 +112,16 @@
                 <form action="#" method="post" enctype="multipart/form-data"><input type="text" name="search" class="header__search" placeholder="Поиск по сайту"></form>
             </div>
             <div class="header__left">
-                <button class="header__enter button">Авторизация на сайте</button>
-                <button class="header__favourites"></button>
-                <button class="header__basket"></button>
+                @guest
+                    <button class="header__enter button">Авторизация на сайте</button>
+                    <button class="header__favourites"></button>
+                    <button class="header__basket"></button>
+                @else
+                    <button class="header__enter button">Личный кабинет</button>
+                    <button class="header__favourites"></button>
+                    <button class="header__basket"></button>
+                @endguest
+
             </div>
         </div>
     </div>

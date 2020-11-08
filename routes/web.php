@@ -66,7 +66,12 @@ Route::post('/newsadmin/store','NewController@store')
     ->name('admin.news.store');
 
 
+
+Route::get('/mylogin', 'PageController@Mylogin')->name('mylogin');
+
+
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/shopgroup/{id}', 'ShopController@index')->name('shop.showgroup');
 Route::get('/newlist','NewController@index')->name('page.news');
@@ -75,3 +80,4 @@ Route::get('/gallaryfoto','GallaryController@showlist')->name('page.showlist');
 Route::get('/gallaryfoto/{id}','GallaryController@showfoto')->name('gallary.foto');
 
 Route::get('/{slug}','PageController@showpage')->name('page.show');
+Route::post('/sendzaivka', 'ApiController@sendZaivka')->name('home');

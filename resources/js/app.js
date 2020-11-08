@@ -28,6 +28,7 @@ Vue.component('fotoindex-component', require('./components/FotomainComponent.vue
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 const app = new Vue({
     el: '#app',
 });
@@ -43,13 +44,14 @@ $(".popUp__close").on("click", (event) => {
     event.preventDefault();
     document.body.style.overflow = 'scroll';
     $(".popUp").removeClass("popUp__active");
+    $(".popUpPhone").removeClass("popUp__active");
 });
 
 /* Browse */
 $(".catalog__gallery").on("click", (event) => {
-    event.preventDefault();
-    document.body.style.overflow = 'hidden';
-    $(".browse").toggleClass("browse__active");
+  //  event.preventDefault();
+ //   document.body.style.overflow = 'hidden';
+  //  $(".browse").toggleClass("browse__active");
 });
 
 $(".browse__fon").on("click", (event) => {
@@ -64,8 +66,34 @@ $(".browse_background").on("click", (event) => {
     $(".browse").removeClass("browse__active");
 });
 
+$(".header__communication").on("click", (event) => {
+    event.preventDefault();
+    document.body.style.overflow = 'hidden';
+    $(".popUpPhone").toggleClass("popUp__active");
+});
 
 
+
+$("#sendzaivka").on("click", (event) => {
+    event.preventDefault();
+   // alert('Zaivka отправлена');
+
+   // $('#divZaivka').innerHTML="Заявка отправлена";
+    let phoneZaiva=$('#phonezaivka').val();
+    document.getElementById("divZaivka").innerHTML = "<h1>Заявка отправлена</h1>";
+    $.ajax({
+        url: '/sendzaivka',
+        method: 'post',
+        dataType: 'html',
+        data: {text:phoneZaiva , "_token": $('meta[name="csrf-token"]').attr('content'),},
+        success: function(data){
+            console.log(data);
+        }
+    });
+
+});
+
+//
 
 /* Accordion */
 $(".accordion__label").click(function(e) {

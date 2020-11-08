@@ -53147,13 +53147,13 @@ $(".popUp__close").on("click", function (event) {
   event.preventDefault();
   document.body.style.overflow = 'scroll';
   $(".popUp").removeClass("popUp__active");
+  $(".popUpPhone").removeClass("popUp__active");
 });
 /* Browse */
 
-$(".catalog__gallery").on("click", function (event) {
-  event.preventDefault();
-  document.body.style.overflow = 'hidden';
-  $(".browse").toggleClass("browse__active");
+$(".catalog__gallery").on("click", function (event) {//  event.preventDefault();
+  //   document.body.style.overflow = 'hidden';
+  //  $(".browse").toggleClass("browse__active");
 });
 $(".browse__fon").on("click", function (event) {
   event.preventDefault();
@@ -53165,6 +53165,31 @@ $(".browse_background").on("click", function (event) {
   document.body.style.overflow = 'scroll';
   $(".browse").removeClass("browse__active");
 });
+$(".header__communication").on("click", function (event) {
+  event.preventDefault();
+  document.body.style.overflow = 'hidden';
+  $(".popUpPhone").toggleClass("popUp__active");
+});
+$("#sendzaivka").on("click", function (event) {
+  event.preventDefault(); // alert('Zaivka отправлена');
+  // $('#divZaivka').innerHTML="Заявка отправлена";
+
+  var phoneZaiva = $('#phonezaivka').val();
+  document.getElementById("divZaivka").innerHTML = "<h1>Заявка отправлена</h1>";
+  $.ajax({
+    url: '/sendzaivka',
+    method: 'post',
+    dataType: 'html',
+    data: {
+      text: phoneZaiva,
+      "_token": $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      console.log(data);
+    }
+  });
+}); //
+
 /* Accordion */
 
 $(".accordion__label").click(function (e) {
