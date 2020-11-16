@@ -178,5 +178,130 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/68389318" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
+
+<!-- Несколько модальных окон -->
+<div class="modal" data-modal="1">
+    <!--   Svg иконка для закрытия окна  -->
+    <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg"               viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+    <p class="modal__title"><b>Добавление товар в таблицу</b></p>
+    <br><br>
+    Товар : <b class="name_modal_tovar">Название товара</b><br>
+    Количество : <input type="number" class="count_modal_tovar" min="0" max="99" value="0">
+    <hr><br><br>
+    <button class="addcard">Добавить в корзину</button>
+</div>
+
+<!-- Подложка под модальным окном -->
+<div class="overlay js-overlay-modal"></div>
+
+<style>
+    /* Стили для подложки */
+
+    .overlay {
+
+        /* Скрываем подложку  */
+        opacity: 0;
+        visibility: hidden;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        z-index: 20;
+        transition: .3s all;
+    }
+
+
+    /* Стили для модальных окон */
+
+    .modal {
+
+        /* Скрываем окна  */
+        opacity: 0;
+        visibility: hidden;
+
+
+        /*  Установаем ширину окна  */
+        width: 100%;
+        max-width: 500px;
+
+        /*  Центрируем и задаем z-index */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 30; /* Должен быть выше чем у подложки*/
+
+        /*  Побочные стили   */
+        box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2);
+        text-align: center;
+        padding: 30px;
+        border-radius: 3px;
+        background-color: #fff;
+        transition: 0.3s all;
+    }
+
+
+    /* Стили для активных классов подложки и окна */
+
+    .modal.active{
+        opacity: 1;
+        z-index: 992;
+        visibility: visible;
+    }
+    .overlay.active{
+        opacity: 1;
+        z-index: 991;
+        visibility: visible;
+    }
+
+
+    /* Стили для кнопки закрытия */
+
+    .modal__cross {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        fill: #444;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+
+</script>
+
+<script>
+    var modalButtons = document.querySelectorAll('.js-open-modal'),
+        overlay      = document.querySelector('.js-overlay-modal'),
+        closeButtons = document.querySelectorAll('.js-modal-close');
+
+    $(document).on( "click", ".addcards", function() {
+        var modalId = this.getAttribute('data-modal'),
+            modalElem = document.querySelector('.modal[data-modal="1"]');
+        var tovarname=$(this).data('tovarname');
+        $('.name_modal_tovar').html(tovarname);
+        $('.count_modal_tovar').val(0);
+        $('.addcard').data('tovarname',$(this).data('tovarname'));
+        $('.addcard').data('tovarid',$(this).data('tovarid'));
+        $('.addcard').data('tovarprice',$(this).data('tovarprice'));
+        modalElem.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    $(document).on( "click", ".js-modal-close", function() {
+        var parentModal = this.closest('.modal');
+        parentModal.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+
+
+</script>
+
 </body>
 </html>

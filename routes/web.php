@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PageController@index');
+Route::get('/clearcards','ShopController@clearCard');
+Route::post('/deletecards','ShopController@deletecards');
+Route::post('/sendzakaz','ShopController@sendzakaz');
 
 
 
@@ -83,3 +86,5 @@ Route::get('/{slug}','PageController@showpage')->name('page.show');
 Route::post('/sendzaivka', 'ApiController@sendZaivka');
 Route::post('/addtovar', 'ApiController@addtovar');
 Route::post('/showcards', 'ApiController@getCardBuy');
+
+

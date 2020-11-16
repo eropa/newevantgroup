@@ -32,10 +32,11 @@
                                 <div class="list__item__value">
                                     <div class="list__item__price">{{$data->price}} р.</div>
                                     <div class="list__item__favorite"></div>
-                                    <div class="list__item__basket addcard"
+                                    <div class="list__item__basket  js-open-modal addcards"
                                          data-tovarid="{{$data->id}}"
                                          data-tovarname="{{$data->name}}"
                                          data-tovarprice="{{$data->price}}"
+                                         data-modal="1"
                                     ></div>
                                 </div>
                             </div>

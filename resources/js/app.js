@@ -96,20 +96,20 @@ $("#sendzaivka").on("click", (event) => {
 $(".addcard").on("click",  function() {
     var  tovarid=$(this).data('tovarid');
     var  tovarname=$(this).data('tovarname');
-    var  tovarprice=$(this).data('tovarprice')
+    var  tovarprice=$(this).data('tovarprice');
+    var  counttovar=$('.count_modal_tovar').val();
     $.ajax({
         url: '/addtovar',
         method: 'post',
         dataType: 'html',
         data: {tovarid:tovarid ,
             tovarname:tovarname,
-            counttovar:1,
+            counttovar:counttovar,
             price:tovarprice,
             "_token": $('meta[name="csrf-token"]').attr('content'),},
         success: function(data){
             alert('Товар в корзине !');
             console.log(data);
-
         }
     });
 });
@@ -140,3 +140,45 @@ $(".header__basket").on("click", (event) => {
 $(".accordion__label").click(function(e) {
     $(this.firstElementChild).toggleClass('open');
 });
+
+
+/**
+ * удалить позицию в корзине
+ */
+$(document).on('click','.deletZakaz',function() {
+    var tovar_id=$(this).data('id');
+    $.ajax({
+        url: '/deletecards',
+        method: 'post',
+        dataType: 'html',
+        data: {
+            "tovarid":tovar_id,
+            "_token": $('meta[name="csrf-token"]').attr('content'),},
+        success: function(data){
+            console.log(data);
+            document.getElementById("ShowCard").innerHTML = data;
+        }
+    });
+});
+
+$(document).on('click','.sendZakaz',function() {
+
+    $.ajax({
+        url: '/sendzakaz',
+        method: 'post',
+        dataType: 'html',
+        data: {
+            "_token": $('meta[name="csrf-token"]').attr('content'),},
+        success: function(data){
+            console.log(data);
+            alert('Заявка отправлена')
+            event.preventDefault();
+            document.body.style.overflow = 'scroll';
+            $(".popUp").removeClass("popUp__active");
+            $(".popUpPhone").removeClass("popUp__active");
+            $(".popUpKorzina").removeClass("popUp__active");
+            location.reload(); // перезагружаем страницу
+        }
+    });
+});
+

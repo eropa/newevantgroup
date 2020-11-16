@@ -53194,6 +53194,7 @@ $(".addcard").on("click", function () {
   var tovarid = $(this).data('tovarid');
   var tovarname = $(this).data('tovarname');
   var tovarprice = $(this).data('tovarprice');
+  var counttovar = $('.count_modal_tovar').val();
   $.ajax({
     url: '/addtovar',
     method: 'post',
@@ -53201,7 +53202,7 @@ $(".addcard").on("click", function () {
     data: {
       tovarid: tovarid,
       tovarname: tovarname,
-      counttovar: 1,
+      counttovar: counttovar,
       price: tovarprice,
       "_token": $('meta[name="csrf-token"]').attr('content')
     },
@@ -53233,6 +53234,46 @@ $(".header__basket").on("click", function (event) {
 
 $(".accordion__label").click(function (e) {
   $(this.firstElementChild).toggleClass('open');
+});
+/**
+ * удалить позицию в корзине
+ */
+
+$(document).on('click', '.deletZakaz', function () {
+  var tovar_id = $(this).data('id');
+  $.ajax({
+    url: '/deletecards',
+    method: 'post',
+    dataType: 'html',
+    data: {
+      "tovarid": tovar_id,
+      "_token": $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      console.log(data);
+      document.getElementById("ShowCard").innerHTML = data;
+    }
+  });
+});
+$(document).on('click', '.sendZakaz', function () {
+  $.ajax({
+    url: '/sendzakaz',
+    method: 'post',
+    dataType: 'html',
+    data: {
+      "_token": $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      console.log(data);
+      alert('Заявка отправлена');
+      event.preventDefault();
+      document.body.style.overflow = 'scroll';
+      $(".popUp").removeClass("popUp__active");
+      $(".popUpPhone").removeClass("popUp__active");
+      $(".popUpKorzina").removeClass("popUp__active");
+      location.reload(); // перезагружаем страницу
+    }
+  });
 });
 
 /***/ }),
@@ -53507,9 +53548,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\evantgroup\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\laragon\www\evantgroup\public\slick\slick.js */"./public/slick/slick.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\evantgroup\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/newevantgroup/newevantgroup/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/html/newevantgroup/newevantgroup/public/slick/slick.js */"./public/slick/slick.js");
+module.exports = __webpack_require__(/*! /var/www/html/newevantgroup/newevantgroup/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

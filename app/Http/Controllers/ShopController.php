@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class ShopController extends Controller
 {
@@ -34,6 +36,47 @@ class ShopController extends Controller
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
+    }
+
+    public function clearCard(Request $request){
+        $request->session()->flush();
+    }
+
+
+    public function deletecards(Request $request){
+        if ($request->session()->has('cardbuy')) {
+            /**
+             * Если товар есть в корзине
+             */
+            $arraSaveSession=array();
+            $datas= session('cardbuy');
+            foreach ($datas as $data){
+                if($data['id']!=$request->input('tovarid')){
+                    $arraSaveSession[]=$data;
+                }
+            }
+            $request->session()->put('cardbuy', $arraSaveSession);
+        }
+        $datas= session('cardbuy');
+        $html= view('front.cardshow',['datas'=>$datas])->render();
+        return $html;
+    }
+
+    public function sendzakaz(Request $request){
+        $datas= session('cardbuy');
+        $user=Auth::user();
+        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
+            $message->to('eropa@live.ru', 'клиент')->subject
+            ('Заявка с сайта на товар');
+            $message->from('evantmailryb@gmail.com','No replay');
+        });
+        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
+            $message->to('jenika06@mail.ru', 'клиент')->subject
+            ('Заявка с сайта на товар');
+            $message->from('evantmailryb@gmail.com','No replay');
+        });
+        $request->session()->flush();
+        return 1;
     }
 
 

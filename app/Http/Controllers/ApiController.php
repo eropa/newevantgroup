@@ -48,16 +48,41 @@ class ApiController extends Controller
 
 
     public function addtovar(Request $request){
-      //  $request->session()->forget('cardbuy');
-        //$a=2;
+        //  $request->session()->forget('cardbuy');
         if ($request->session()->has('cardbuy')) {
-            $arrayAdd=array('id'=>$request->input('tovarid'),
-                'name'=>$request->input('tovarname'),
-                'counttovar'=>$request->input('counttovar'));
-            $request->session()->push('cardbuy', $arrayAdd);
+            /**
+             * Если товар есть в корзине
+             */
+            $arraSaveSession=array();
+            $iFlag=0;
+            $datas= session('cardbuy');
+            foreach ($datas as $data){
+                if($data['id']==$request->input('tovarid')){
+                    $iFlag++;
+                    $arrayAdd=array('id'=>$request->input('tovarid'),
+                        'name'=>$request->input('tovarname'),
+                        'price'=>$request->input('price'),
+                        'counttovar'=>($request->input('counttovar')+$data['counttovar']));
+                }else{
+                    $arrayAdd=$data;
+                }
+                $arraSaveSession[]=$arrayAdd;
+            }
+            if($iFlag==0){
+                $arrayAdd=array('id'=>$request->input('tovarid'),
+                    'name'=>$request->input('tovarname'),
+                    'price'=>$request->input('price'),
+                    'counttovar'=>$request->input('counttovar'));
+                $arraSaveSession[]=$arrayAdd;
+            }
+            $request->session()->put('cardbuy', $arraSaveSession);
         }else {
+            /**
+             * Если корзина пуста то добовляем сюда
+             */
             $arrayAdd=array('id'=>$request->input('tovarid'),
                             'name'=>$request->input('tovarname'),
+                            'price'=>$request->input('price'),
                             'counttovar'=>$request->input('counttovar')
                 );
             $request->session()->push('cardbuy', $arrayAdd);
