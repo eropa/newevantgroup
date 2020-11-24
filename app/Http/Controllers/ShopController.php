@@ -95,9 +95,9 @@ class ShopController extends Controller
         $output = curl_exec($ch);
         curl_close($ch);
 
-        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message,$output) {
+        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
             $message->to('eropa@live.ru', 'клиент')->subject
-            ('Заявка с сайта на товар #'.$output);
+            ('Заявка с сайта на товар ');
             $message->from('evantmailryb@gmail.com','No replay');
         });
        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
