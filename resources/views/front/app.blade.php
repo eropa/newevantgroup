@@ -117,7 +117,9 @@
         </div>
         <div class="header__middle">
             <div class="header__right">
-                <img class="header__logo" src="{{ asset('img/header/logo.png') }}" alt="">
+                <a href="{{ url('/') }}">
+                    <img class="header__logo" src="{{ asset('img/header/logo.png') }}" alt="">
+                </a>
                 <div class="header__address">Мебельное ателье <br> ул. Чернышевского 6А <br> www.evantgroup.com <br> 077749822, 077754155</div>
             </div>
             <div class="header__center">
@@ -127,11 +129,9 @@
             <div class="header__left">
                 @guest
                     <button class="header__enter button">Авторизация на сайте</button>
-                    <button class="header__favourites"></button>
                     <button class="header__basket"></button>
                 @else
                     <button class="header__enter button">Личный кабинет</button>
-                    <button class="header__favourites"></button>
                     <button class="header__basket"></button>
                 @endguest
 

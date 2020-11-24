@@ -14,13 +14,28 @@ class ShopController extends Controller
         $menus2=Menu::where('pos_id',2)->get();
         $datas=$this->getDataApi($id);
         $datas=json_decode($datas);
+        $datagroups=json_decode(  $this->getGroupList());
+
+
 
 
         return view('front.shopgroup',[
             'tite'=>"EvantGroup - мебель на заказ",
             'menus1'=>$menus1,
             'datas'=>$datas,
+            'datagroups'=>$datagroups,
             'menus2'=>$menus2,'id'=>$id]);
+    }
+
+    protected function getGroupList(){
+        $url = env('sklad_url')."api/getcategshop";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
     }
 
     protected function getDataApi($id){
@@ -65,12 +80,27 @@ class ShopController extends Controller
     public function sendzakaz(Request $request){
         $datas= session('cardbuy');
         $user=Auth::user();
-        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
+
+        $url = env('sklad_url')."api/setzaivka";
+        $ch = curl_init();
+        $post_data = array (
+            "datazaivka" => json_encode($datas),
+            "user_id"=>$user->id,
+            "comment"=>"-------"
+        );
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message,$output) {
             $message->to('eropa@live.ru', 'клиент')->subject
-            ('Заявка с сайта на товар');
+            ('Заявка с сайта на товар #'.$output);
             $message->from('evantmailryb@gmail.com','No replay');
         });
-        Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
+       Mail::send(['text'=>'mailzakaz'], ['datas'=>$datas,'user'=>$user],function($message) {
             $message->to('jenika06@mail.ru', 'клиент')->subject
             ('Заявка с сайта на товар');
             $message->from('evantmailryb@gmail.com','No replay');

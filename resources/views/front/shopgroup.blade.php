@@ -31,7 +31,6 @@
                                 </div>
                                 <div class="list__item__value">
                                     <div class="list__item__price">{{$data->price}} р.</div>
-                                    <div class="list__item__favorite"></div>
                                     <div class="list__item__basket  js-open-modal addcards"
                                          data-tovarid="{{$data->id}}"
                                          data-tovarname="{{$data->name}}"
@@ -48,8 +47,9 @@
                 <div class="categories__filtres">
                     <div class="categories">
                         <div class="categories__title">Категории товаров</div>
-                        <section class="accordion">
-                        </section>
+                        @foreach($datagroups as $itemgroup)
+                            <li>{{$itemgroup->id}} {{$itemgroup->name}}</li>
+                        @endforeach
                     </div>
 
                 </div>
