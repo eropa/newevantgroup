@@ -9,6 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{{$tite}}</title>
     <!-- CSRF Token -->
+
+    @yield('metateg')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="ESV6jPP7DnDCHN5HR35d13mElWwIKdmNyIzc8IP-D9k" />
     <script src="{{ asset('js/app.js') }}?v=3" defer></script>
