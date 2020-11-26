@@ -48,6 +48,10 @@ Route::post('/pageadmin/pagelist/store','PageController@store')
 
 Route::get('/fotocatadmin/list','FotocatController@fotocat')
     ->name('admin.fotocat');
+Route::get('/fotocatadmin/edit/{id}','FotocatController@edit')
+    ->name('admin.fotocat.edit');
+Route::post('/fotocatadmin/update','FotocatController@update')
+    ->name('admin.fotocat.update');
 
 Route::get('/fotocatadmin/list/{id}','GallaryController@showfotoAdmin')
     ->name('admin.gallarylist');
@@ -55,6 +59,10 @@ Route::get('/fotocatadmin/addfooto','GallaryController@storefoto')
     ->name('admin.gallary.add');
 Route::post('/fotocatadmin/createfooto','GallaryController@createfoto')
     ->name('admin.gallary.store');
+Route::get('/fotocatadmin/editgal/{id}','GallaryController@edit')
+    ->name('admin.gallary.edit');
+Route::post('/fotocatadmin/editgal/update','GallaryController@updatedate')
+    ->name('admin.gallary.update');
 
 Route::get('/fotocatadmingal/delete/{id}','GallaryController@deletefoto')
     ->name('admin.gallary.delete');

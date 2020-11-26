@@ -30,10 +30,14 @@
                                         <td>
                                             {{$data->name}}
                                             <a href="{{ route('admin.gallarylist',['id'=>$data->id]) }}">
-                                                фото
+                                              (Список всеx фото)
                                             </a>
                                         </td>
                                         <td>
+                                            <a href="{{ route('admin.fotocat.edit',['id'=>$data->id]) }}">
+                                                ред.
+                                            </a>
+                                            /
                                             <a href="{{ route('admin.fotocat.delete',['id'=>$data->id]) }}">
                                                 удалить
                                             </a>

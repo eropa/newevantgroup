@@ -698,10 +698,10 @@ transform: rotate(-45deg);
 }
 
 .header__enter {
-    width: 170px;
+    width: 140px;
     height: 60px;
 
-    padding: 0 32px;
+    padding: 0 20px;
     position: absolute;
     top: -69px;
     left: 0;

@@ -33,12 +33,6 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="htmlCodeId">Описание</label>
-                                <textarea class="form-control"
-                                          name="about"
-                                          id="htmlCodeId" rows="3"></textarea>
-                            </div>
                             <input type="file" name="file_name">
                             @csrf
                             <hr>

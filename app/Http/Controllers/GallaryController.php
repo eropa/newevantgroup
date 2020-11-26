@@ -88,4 +88,34 @@ class GallaryController extends Controller
         return redirect()->back();
     }
 
+    public function edit($id){
+        $this->authorize('isAdmin', User::class);
+        $data=Gallary::find($id);
+        if(is_null($data))
+            abort(404);
+        $cats=Fotocat::all();
+        return view('back.gallary.edit',['data'=>$data,'cats'=>$cats]);
+    }
+
+    public function updatedate(Request $request){
+        $this->authorize('isAdmin', User::class);
+        $model=Gallary::find($request->input('id'));
+        if(is_null($model))
+            abort(404);
+        $model->slug=$request->input('slug');
+        $model->fotocat_id=$request->input('fotocat_id');
+        $model->name=$request->input('name');
+        if($request->file('file_name')){
+            //   File::put("files/abc.txt", "This is content in txt file");
+            $file = $request->file('file_name');
+            $destinationPath = 'gallary';
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $file->move($destinationPath,$fileName);
+            $model->file_name=$fileName;
+        }
+        $model->save();
+        return redirect()->route('admin.gallarylist',['id'=>$request->input('fotocat_id')]);
+    }
+
+
 }

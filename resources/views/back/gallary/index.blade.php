@@ -32,9 +32,14 @@
                                             {{$data->name}}
                                         </td>
                                         <td>
-                                            {{$data->fotocat_id}}
+                                            {{$data->categname->name}}
                                         </td>
                                         <td>
+                                            <a href="{{ route('admin.gallary.edit',['id'=>$data->id]) }}">
+                                                ред.
+                                            </a>
+
+                                            /
                                             <a href="{{ route('admin.gallary.delete',['id'=>$data->id]) }}">
                                                 удалить
                                             </a>
