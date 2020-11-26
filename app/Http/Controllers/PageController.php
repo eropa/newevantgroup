@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallary;
 use App\Models\Infoblok;
 use App\Models\Menu;
 use App\Models\Page;
@@ -81,15 +82,18 @@ class PageController extends Controller
         $menus1=Menu::where('pos_id',1)->get();
         $menus2=Menu::where('pos_id',2)->get();
 
-
-
-
-
         return view('front.login',[
             'tite'=>"EvantGroup - мебель на заказ",
             'menus1'=>$menus1,
             'menus2'=>$menus2,
         ]);
+    }
+
+
+
+    public function sitemap() {
+        $posts = Gallary::get();
+        return view('sitemap')->with(compact('posts'));
     }
 
 }

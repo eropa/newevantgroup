@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/sitemap.xml', 'PageController@sitemap');
 
 Route::get('/', 'PageController@index');
 Route::get('/clearcards','ShopController@clearCard');
@@ -95,5 +96,7 @@ Route::post('/sendzaivka', 'ApiController@sendZaivka');
 Route::post('/addtovar', 'ApiController@addtovar');
 Route::post('/showcards', 'ApiController@getCardBuy');
 Route::get('/showfotourl/{id}','GallaryController@showfotourl')->name('page.news.showfotourl');
+
+
 
 
