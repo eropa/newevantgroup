@@ -94,5 +94,6 @@ Route::get('/{slug}','PageController@showpage')->name('page.show');
 Route::post('/sendzaivka', 'ApiController@sendZaivka');
 Route::post('/addtovar', 'ApiController@addtovar');
 Route::post('/showcards', 'ApiController@getCardBuy');
+Route::get('/showfotourl/{id}','GallaryController@showfotourl')->name('page.news.showfotourl');
 
 

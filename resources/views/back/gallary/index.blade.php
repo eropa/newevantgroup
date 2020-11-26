@@ -43,6 +43,12 @@
                                             <a href="{{ route('admin.gallary.delete',['id'=>$data->id]) }}">
                                                 удалить
                                             </a>
+                                            <hr>
+                                            <a href="{{ route('page.news.showfotourl',['id'=>$data->id]) }}"
+                                               target=”_blank”
+                                            >
+                                            для соц.сети
+                                            </a>
 
                                         </td>
                                     </tr>

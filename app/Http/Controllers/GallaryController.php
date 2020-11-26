@@ -117,5 +117,14 @@ class GallaryController extends Controller
         return redirect()->route('admin.gallarylist',['id'=>$request->input('fotocat_id')]);
     }
 
+    public function showfotourl($id){
+        $menus1=Menu::where('pos_id',1)->get();
+        $menus2=Menu::where('pos_id',2)->get();
+        $fotoData=Gallary::find($id);
+        return view('front.showfotourl',[ 'menus1'=>$menus1,
+            'menus2'=>$menus2,'tite'=>"Фото галлерея работ",'fotoData'=>$fotoData]);
+
+    }
+
 
 }
