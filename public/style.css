@@ -1487,27 +1487,48 @@ article .filtres_price {
     margin-top: 167px;
 }
 
+@media (max-width: 1100px) {
+    .container {
+        padding: 0 10px;
+    }
 
+    .header__nav a {
+        padding: 0 5px;
+        margin: 0 5px;
+    }
+    .header__right {
+        margin: 0;
+    }
 
+    .header__address {
+        display: none;
+    }
+}
 
+@media (max-width: 820px) {
+    .header__middle {
+        display: none;
+    }
 
+    .header__top {
+        display: none;
+    }
 
+    .header__bottom__section {
+        font-size: 15px;
+        padding: 6px 10px;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+    .header__bottom__section {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}
 
 
 
